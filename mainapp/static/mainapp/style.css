@@ -1,0 +1,15 @@
+.details-slider {
+	width: 570px;
+	float: left;
+	margin-right: 30px;
+}
+
+.slider-product img {
+	width: 100%;
+}
+.slider-control {
+    width: 420px;
+    height: 70px;
+	margin: 0px 0px;
+    padding-left: 150px;
+}

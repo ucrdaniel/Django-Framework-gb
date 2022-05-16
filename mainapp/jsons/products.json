@@ -1,0 +1,56 @@
+[
+  {
+      "category": "стулья",
+      "name": "Удобный стул",
+      "image": "products_images/product-4.jpg",
+      "short_desc": "Нежный ламповый свет",
+      "description": "",
+      "price": "1450.00",
+      "quantity": 10
+  },
+  {
+      "category": "Лампы",
+      "name": "Лампа сфера",
+      "image": "products_images/product-1.jpg",
+      "short_desc": "Уникальный дизайн",
+      "description": "",
+      "price": "2300.00",
+      "quantity": 32
+  },
+  {
+      "category": "Кресла",
+      "name": "Кресла двойка",
+      "image": "products_images/product-2.jpg",
+      "short_desc": "Удобный стул для всех",
+      "description": "",
+      "price": "15000.00",
+      "quantity": 3
+  },
+  {
+      "category": "Лампы",
+      "name": "Настенная лампа",
+      "image": "products_images/product-2-sm.jpg",
+      "short_desc": "Уникальный дизайн",
+      "description": "",
+      "price": "1230.00",
+      "quantity": 20
+  },
+  {
+      "category": "Лампы",
+      "name": "Настольная лампа",
+      "image": "products_images/product-31.jpg",
+      "short_desc": "Нежный ламповый свет",
+      "description": "",
+      "price": "3000.00",
+      "quantity": 20
+  },
+  {
+      "category": "Диваны",
+      "name": "Удобный диван",
+      "image": "products_images/product-3-sm.jpg",
+      "short_desc": "Удобный стул для всех",
+      "description": "",
+      "price": "50000.00",
+      "quantity": 23
+  }
+]
