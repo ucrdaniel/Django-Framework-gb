@@ -1,0 +1,32 @@
+{% extends 'adminapp/base.html' %}
+{% load static %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid">
+            <h1 class="mt-4">{{ title|title }}</h1>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <i class="fas fa-table mr-1"></i>
+                    {{ category.name|title }}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        Уверены, что хотите удалить {{ category_to_delete.name }}?
+                        <form action="{% url 'admin_stuff:category_delete' category_to_delete.pk %}"
+                              method="post">
+                          {% csrf_token %}
+                          <input class="btn btn-danger" type="submit" value="удалить">
+                        </form>
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'admin_stuff:categories' %}">
+                        <button class="btn btn-success">Отмена</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}
