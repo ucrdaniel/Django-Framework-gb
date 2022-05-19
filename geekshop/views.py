@@ -1,12 +1,10 @@
 from django.shortcuts import render
 
-from basketapp.models import Basket
 from mainapp.models import Product
 
 
 def index(request):
     products = Product.objects.all()[:4]
-    Product.objects.r
 
     context = {
         'title': 'главная',
