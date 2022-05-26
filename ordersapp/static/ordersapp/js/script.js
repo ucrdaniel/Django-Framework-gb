@@ -69,8 +69,51 @@ window.onload = function () {
         removed: deleteOrderItem
     });
 
+    if(!order_total_quantity){
+        orderSummaryRecalc();
+    }
+
+    function orderSummaryRecalc() {
+        order_total_quantity = 0;
+        order_total_price = 0;
+
+        for(let i=0; i < total_forms; i++){
+            order_total_quantity += quantity_arr[i];
+            order_total_price += quantity_arr[i] * price_arr[i];
+        }
+        $('.order_total_quantity').html(order_total_quantity.toString());
+        $('.order_total_cost').html(order_total_price.toFixed(2).toString());
+    }
+
     $('.order_form select').change(function () {
-        var target = event.target;
-        console.log(target);
-    })
+        console.log('CHANGE FORM')
+        let target = event.target;
+        orderitem_num = parseInt(target.name.match(/\d+/)[0]);
+        let orderitem_product_pk = target.options[target.selectedIndex].value;
+
+        if(orderitem_product_pk){
+            $.ajax({
+                url: `/orders/product/${orderitem_product_pk}/price/`,
+                success: function (data) {
+                    if (data.price){
+                        price_arr[orderitem_num] = parseFloat(data.price);
+                        if(isNaN(quantity_arr[orderitem_num])){
+                            quantity_arr[orderitem_num] = 0;
+                        }
+                        let price_html = '<span>' + data.price.toString().replace('.', ',') + '</span> руб';
+                        console.log(price_html);
+                        let current_tr = $('.order_form table').find('tr:eq(' + (orderitem_num + 1) + ')');
+                        console.log(current_tr)
+                        current_tr.find('td:eq(2)').html(price_html);
+
+                        if(isNaN(current_tr.find('input[type="number"]').val())) {
+                            current_tr.find('input[type="number"]').val(0);
+                        }
+                        orderSummaryRecalc();
+                    }
+
+                }
+            });
+        }
+    });
 }
