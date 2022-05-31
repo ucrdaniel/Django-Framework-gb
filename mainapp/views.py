@@ -32,7 +32,6 @@ def products(request, pk=None, page=1):
             category = get_object_or_404(ProductCategory, pk=pk)
             products = Product.objects.filter(category__pk=pk).order_by('price')
 
-
         context = {
             'title': title,
             'links_menu': links_menu,
