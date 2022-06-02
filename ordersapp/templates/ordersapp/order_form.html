@@ -1,5 +1,6 @@
 {% extends "geekshop/base.html" %}
 {% load static %}
+{% load cache %}
 
 {% block css %}
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"
@@ -41,7 +42,13 @@
                                 {% endif %}
                                 {{ field.errors.as_ul }}
                                 {% if field.name != 'price' %}
-                                    {{ field }}
+                                    {% if field.name == 'product' %}
+                                        {% cache 3600 orderitemform_product field.value %}
+                                            {{ field }}
+                                        {% endcache %}
+                                    {% else %}
+                                        {{ field }}
+                                    {% endif %}
                                 {% else %}
                                     {% if field.value %}
                                         <span class="orderitems-{{ forloop.parentloop.counter0 }}-price">
